@@ -14,11 +14,11 @@
 ```
 
 
-This is a [webpack](http://webpack.js.org/) plugin that simplifies injection of chunks in `head` and `body` tags of HTML files using `HtmlWebpackPlugin` to serve your `webpack` bundles. This is especially useful when you want to inject some chunks to head and some chunks to body using HtmlWebpackPlugin.
+This is a [webpack](http://webpack.js.org/) plugin that manage chunks in `head` and `body` tags of HTML files using `HtmlWebpackPlugin` to serve your `webpack` bundles.
 
 
 <h2 align="center">Usage</h2>
-Suppose you want have `2 chunks` that you want to inject in the html document using HtmlWebpackPlugin. If you want to inject `one chunk in head` and `one chunk in body` of the same html document.
+If you want inject chunks in the html document using HtmlWebpackPlugin, somethime you need to inject some `chunks` in `head` or `body`, you just need put chunks to entry in `webpack.config.js` with key `head` or `body`.
 
 **webpack.config.js**
 ```js
@@ -53,7 +53,7 @@ This will generate a file `dist/index.html` containing the following
   <head>
     <meta charset="utf-8">
     <title>Archit's App</title>
-    <script type="text/javascript" src="head.bundle.js"></script></head>
+    <script type="text/javascript" src="head.bundle.js"></script>
   </head>
   <body>
     <script src="body.bundle.js"></script>
