@@ -32,7 +32,6 @@ function getHeadAndBodyChunks(headChunks, bodyChunks) {
 
 class HtmlWebpackAssetsPlugin {
     apply(compiler) {
-        // HtmlWebpackPlugin version 4.0.0-beta.5
         if (HtmlWebpackPlugin.getHooks) {
             compiler.hooks.compilation.tap('HtmlWebpackAssetsPlugin', (compilation) => {
                 HtmlWebpackPlugin.getHooks(compilation).alterAssetTagGroups.tapAsync(
@@ -45,7 +44,6 @@ class HtmlWebpackAssetsPlugin {
                 )
             });
         } else {
-            // HtmlWebpackPlugin version 3.2.0
             compiler.plugin("compilation", compilation => {
                 compilation.plugin("html-webpack-plugin-alter-asset-tags", data => {
                     const ch = getHeadAndBodyChunks(data.head, data.body);
