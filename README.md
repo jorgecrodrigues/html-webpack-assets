@@ -18,6 +18,7 @@ This is a [webpack](http://webpack.js.org/) plugin that manage chunks in `head` 
 
 
 <h2 align="center">Usage</h2>
+
 If you want inject chunks in the html document using HtmlWebpackPlugin, somethime you need to inject some `chunks` in `head` or `body`, you just need put chunks to entry in `webpack.config.js` with key `head` or `body`.
 
 **webpack.config.js**
@@ -36,8 +37,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./index.html",
-      filename: "./dist/index.html",
+      template: "./src/index.ejs",
       chunks: ["head", "body"]
     }),
     new HtmlWebpackAssets()
@@ -52,7 +52,7 @@ This will generate a file `dist/index.html` containing the following
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Archit's App</title>
+    <title>Test</title>
     <script type="text/javascript" src="head.bundle.js"></script>
   </head>
   <body>
