@@ -1,2 +1,62 @@
-# html-webpack-assets
-Plugin to manage head or body chunks injection using HtmlWebpackPlugin
+<div align="center">
+  <h1>HTML Webpack Assets Plugin</h1>
+  <p>Plugin to manage injection of chunks into <b>head</b> and <b>body</b> using <a href="https://github.com/jantimon/html-webpack-plugin">HtmlWebpackPlugin</a></p>
+</div>
+
+<h2 align="center">Installation</h2>
+
+```bash
+  npm i --save-dev html-webpack-assets
+```
+
+```bash
+  yarn add --dev html-webpack-assets
+```
+
+
+This is a [webpack](http://webpack.js.org/) plugin that simplifies injection of chunks in `head` and `body` tags of HTML files using `HtmlWebpackPlugin` to serve your `webpack` bundles. This is especially useful when you want to inject some chunks to head and some chunks to body using HtmlWebpackPlugin.
+
+
+<h2 align="center">Usage</h2>
+Suppose you want have `2 chunks` that you want to inject in the html document using HtmlWebpackPlugin. If you want to inject `one chunk in head` and `one chunk in body` of the same html document.
+
+**webpack.config.js**
+```js
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackAssets = require('html-webpack-assets');
+
+module.exports = {
+  entry: {
+    head: "./src/head.css", // Add to head tag
+    body: "./src/body.js" // Add to body tag
+  },
+  output: {
+    path: "./dist",
+    filename: "[name].bundle.js"
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./index.html",
+      filename: "./dist/index.html",
+      chunks: ["head", "body"]
+    }),
+    new HtmlWebpackAssets()
+  ]
+}
+```
+
+This will generate a file `dist/index.html` containing the following
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Archit's App</title>
+    <script type="text/javascript" src="head.bundle.js"></script></head>
+  </head>
+  <body>
+    <script src="body.bundle.js"></script>
+  </body>
+</html>
+```
