@@ -1,6 +1,6 @@
 {
   "name": "html-webpack-assets",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Plugin to manage injection of chunks into head and body using HtmlWebpackPlugin",
   "main": "index.js",
   "keywords": [
